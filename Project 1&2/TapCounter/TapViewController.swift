@@ -40,7 +40,7 @@ class TapViewController: UIViewController {
         // Set up longpress gesture recognize
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(tapButtonTappedWithLongPress))
     
-        longPress.minimumPressDuration = 0.5
+        longPress.minimumPressDuration = 0.2
         tapButton.addGestureRecognizer(longPress)
         
     }
