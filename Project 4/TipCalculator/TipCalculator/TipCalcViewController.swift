@@ -181,7 +181,6 @@ class TipCalcViewController: UIViewController, UITextFieldDelegate {
         self.mealPrice.tipPercentage = Int(sender.value)
         
         updateCalculation()
-        
     }
 
     //MARK: - Helper Methods
@@ -204,8 +203,11 @@ class TipCalcViewController: UIViewController, UITextFieldDelegate {
     // When clicking on the field, use this method.
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
+        // reset the input fieldg
+        mealPrice.basePrice = 0
         mealPriceInput.text = ""
-        
+        mealPriceInput.placeholder = "$0.00"
+
         // deactivate slider
         self.tipSlider.isEnabled = false
         
@@ -214,8 +216,9 @@ class TipCalcViewController: UIViewController, UITextFieldDelegate {
         keyboardDoneButtonView.sizeToFit()
         
         // Setup the buttons to be put in the system.
-        let item = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(TipCalcViewController.endEditingNow) )
-        let toolbarButtons = [item]
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(TipCalcViewController.endEditingNow) )
+
+        let toolbarButtons = [doneButton]
         
         //Put the buttons into the ToolBar and display the tool bar
         keyboardDoneButtonView.setItems(toolbarButtons, animated: false)
@@ -228,8 +231,11 @@ class TipCalcViewController: UIViewController, UITextFieldDelegate {
         
         if let basePriceString = textField.text,
             let basePrice = Double(basePriceString) {
-            mealPrice.basePrice = basePrice
+            
+            self.mealPrice.basePrice = basePrice
             mealPriceInput.text = mealPrice.formattedBasePrice
+            print("\n[entered]formatted price: \(mealPrice.formattedBasePrice)")
+            
         }
         
         // activate slider
