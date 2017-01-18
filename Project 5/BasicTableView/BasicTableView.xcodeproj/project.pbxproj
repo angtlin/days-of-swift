@@ -294,6 +294,7 @@
 				84FE49C11E2D5CB5003E414F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

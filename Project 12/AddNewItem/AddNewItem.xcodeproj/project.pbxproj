@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		845A875A1E2FC28700D4DB85 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845A87591E2FC28700D4DB85 /* Movie.swift */; };
 		84FE49D31E2DFD9C003E414F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE49D21E2DFD9C003E414F /* AppDelegate.swift */; };
 		84FE49D51E2DFD9C003E414F /* AddNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE49D41E2DFD9C003E414F /* AddNewViewController.swift */; };
 		84FE49DA1E2DFD9C003E414F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84FE49D91E2DFD9C003E414F /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		845A87591E2FC28700D4DB85 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		84FE49CF1E2DFD9C003E414F /* AddNewItem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AddNewItem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84FE49D21E2DFD9C003E414F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84FE49D41E2DFD9C003E414F /* AddNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				84FE49E41E2DFDFC003E414F /* MovieTableViewController.swift */,
 				84FE49E61E2DFECD003E414F /* MovieTableViewCell.swift */,
 				84FE49D41E2DFD9C003E414F /* AddNewViewController.swift */,
+				845A87591E2FC28700D4DB85 /* Movie.swift */,
 				84FE49D91E2DFD9C003E414F /* Assets.xcassets */,
 				84FE49DB1E2DFD9C003E414F /* LaunchScreen.storyboard */,
 				84FE49DE1E2DFD9C003E414F /* Info.plist */,
@@ -143,6 +146,7 @@
 				84FE49D31E2DFD9C003E414F /* AppDelegate.swift in Sources */,
 				84FE49E71E2DFECD003E414F /* MovieTableViewCell.swift in Sources */,
 				84FE49E51E2DFDFC003E414F /* MovieTableViewController.swift in Sources */,
+				845A875A1E2FC28700D4DB85 /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +302,7 @@
 				84FE49E31E2DFD9C003E414F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

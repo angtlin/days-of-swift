@@ -12,7 +12,7 @@ import UIKit
 class MovieTableViewController: UITableViewController {
 
     private let cellId = "cellId"
-    var localMovieSource = ["Iron Man", "Spiderman", "Batman"] {
+    var localMovieSource: [Movie] = [Movie(title: "Iron Man"), Movie(title: "Spiderman"), Movie(title: "Batman")] {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -22,7 +22,7 @@ class MovieTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("view will appear.. # of count \(localMovieSource)")
+        print("\n[ViewWillAppear - TableViewController] --> # of movies: \(localMovieSource.count)")
     }
     
     override func viewDidLoad() {
@@ -64,7 +64,7 @@ class MovieTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! MovieTableViewCell
 
-        cell.textLabel?.text = localMovieSource[indexPath.row]
+        cell.textLabel?.text = localMovieSource[indexPath.row].title
         cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .none
         

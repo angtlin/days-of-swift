@@ -35,11 +35,11 @@ class AddNewViewController: UIViewController, UITextFieldDelegate {
         // set keyboard to show when loaded
         movieInput.becomeFirstResponder()
         
+        // keyboard must have Done button function .... so that it can be saved to array in previous VC & dismiss view controller
         // set return key as "Done"
         movieInput.returnKeyType = .done
         
         movieInput.delegate = self
-        // keyboard must have Done button function .... so that it can be saved to array in previous VC & dismiss view controller
         
     }
     
@@ -60,16 +60,20 @@ class AddNewViewController: UIViewController, UITextFieldDelegate {
         
         textField.resignFirstResponder()
         
-        guard let newMovieString = movieInput.text else {
-            // do popup error
-            fatalError()
+        guard let newMovieString = movieInput.text, newMovieString.isEmpty == false else {
+            
+            // do popup alert for blank input
+            let alert = UIAlertController(title: "Warning", message: "Enter a movie name first, then click Done", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return false
         }
         
     print("The first viewcontroller in nav stack --> \(self.navigationController?.viewControllers.first)")
         
         if let previousVC = self.navigationController?.viewControllers.first as? MovieTableViewController {
             
-            previousVC.localMovieSource.append(newMovieString)
+            previousVC.localMovieSource.append(Movie(title: "\(newMovieString)"))
             
             self.navigationController?.popViewController(animated: true)
         }
