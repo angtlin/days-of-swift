@@ -127,7 +127,10 @@ class GroceriesTableViewController: UITableViewController {
     
      // Override to support rearranging the table view.
      override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
+        let itemToMove = groceryList[fromIndexPath.row]
+        print("Item to re-arrange ->  \(groceryList[fromIndexPath.row]). from index# \(fromIndexPath.row), to: \(to.row)")
+        groceryList.remove(at: fromIndexPath.row)
+        groceryList.insert(itemToMove, at: to.row)
      }
     
     
