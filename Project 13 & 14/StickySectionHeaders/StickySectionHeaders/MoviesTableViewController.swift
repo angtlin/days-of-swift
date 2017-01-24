@@ -19,6 +19,8 @@ class MoviesTableViewController: UITableViewController {
     
     var cellId = "cellId"
     
+    var sectionHeaders = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,20 +34,31 @@ class MoviesTableViewController: UITableViewController {
         
         let movieManager = MoviesManager()
         moviesDataSource = movieManager.getMovieDataFromJson()
+        
+        
+        // Set up the ABC section headings
+        let alphabetLetters = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z"
+        sectionHeaders = alphabetLetters.components(separatedBy: " ")
+        
     }
     
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 1
+        return sectionHeaders.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return moviesDataSource.count
+        return 8
+        //return moviesDataSource.count
     }
 
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        return sectionHeaders[section]
+        
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
