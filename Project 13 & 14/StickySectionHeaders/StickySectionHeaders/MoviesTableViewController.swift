@@ -31,8 +31,9 @@ class MoviesTableViewController: UITableViewController {
     // MARK:- UI View
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationItem.title = "Movies"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(clickSearch))
         
         // Register tableview cell
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
@@ -60,8 +61,8 @@ class MoviesTableViewController: UITableViewController {
         filteredMovies = moviesDataSource.filter { movie in
             return movie.title.lowercased().contains(searchText.lowercased())
         }
-        
-        print("filtered count: \(self.filteredMovies.count) . nonfiltered count: \(self.moviesDataSource.count)")
+        print("  >> running UISearchResultsUpdating delegate for \(searchText)")
+        print("  >> filtered count: \(self.filteredMovies.count) . nonfiltered count: \(self.moviesDataSource.count)")
         setupSectionsIndex(movieSource: filteredMovies)
         tableView.reloadData()
     }
@@ -80,7 +81,21 @@ class MoviesTableViewController: UITableViewController {
                 .filter { $0.titleFirstLetter == firstLetter } // get the titles with matching first letter
                 .sorted { $0.title < $1.title } // sort them and saved into new array (sections)
         }
-
+    }
+    
+    
+    // MARK:- Other functions
+    
+    func clickSearch() {
+        print("Clicked search icon")
+        
+        //searchController.isActive = true  
+        // Note: calling the isActive first makes the below not work, so commenting out
+        
+        DispatchQueue.main.async { [unowned self] in
+            self.searchController.searchBar.becomeFirstResponder()
+        }
+        
     }
     
     // MARK: - Table view data source
@@ -144,7 +159,7 @@ extension MoviesTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         
         let searchBar = searchController.searchBar
-        print(">> running UISearchResultsUpdating for \(searchBar.text)")
         filterContentForSearchText(searchText: searchBar.text!)
     }
+    
 }
